@@ -24,8 +24,8 @@ public class Temporizador : MonoBehaviour
     void Update()
     {
         horas = (int)(cronometro / 3600f);
-        minutos = (int)(cronometro / 60f);
-        segundos = (int)(cronometro - horas * 60f);
+        minutos = (int)(cronometro / 60f - horas * 60f);
+        segundos = (int)(cronometro - minutos * 60f - horas * 3600f);
         microsegundos = (int)((cronometro - (int)cronometro) * 100f);
         if (contando == true)
         {
@@ -36,7 +36,7 @@ public class Temporizador : MonoBehaviour
         {
             cronometro = 0;
         }
-        textoCronometro.text = (horas +":"+ minutos + ":" + segundos + ":" + microsegundos.ToString());
+        textoCronometro.text = (horas + ":" + minutos + ":" + segundos + ":" + microsegundos.ToString());
     }
     public void playAction()
     {
